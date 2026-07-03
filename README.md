@@ -255,4 +255,4 @@ Halaman Utama (/)
 
 ---
 
-> Dibuat sebagai proyek portofolio · 2026
+> Dibuat sebagai proyek portofolio · 2026 oleh Graciella Zahra Angelia
