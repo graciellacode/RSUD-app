@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique(map: "User_email_key")
+  password String
+  role     String
+}
+
+model pasien {
+  id           Int      @id @default(autoincrement())
+  nik          String   @unique
+  nama         String
+  tanggalLahir DateTime
+  jenisKelamin String
+  alamat       String
+  noHp         String
+  createdAt    DateTime @default(now())
+  pendaftaran Pendaftaran[]
+}
+
+model Dokter {
+  id           Int      @id @default(autoincrement())
+  nama         String
+  spesialisasi String   
+  noIzinPraktek String   @unique
+  noHp         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  jadwalPraktek JadwalPraktek[]
+
+  @@map("dokter")
+}
+
+model JadwalPraktek {
+  id        Int      @id @default(autoincrement())
+  dokterId  Int      
+  hari      String   
+  jamMulai  String   
+  jamSelesai String  
+  kuota     Int     
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  pendaftaran Pendaftaran[]
+
+  dokter    Dokter   @relation(fields: [dokterId], references: [id], onDelete: Cascade)
+
+  @@map("jadwal_praktek")
+}
+
+model Pendaftaran {
+  id               Int           @id @default(autoincrement())
+  pasienId         Int
+  jadwalPraktekId  Int
+  tanggalPeriksa   DateTime
+  noAntrean        Int
+  status           String        // "MENUNGGU", "SELESAI", atau "BATAL"
+  keluhan          String        @db.Text
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  pasien           pasien        @relation(fields: [pasienId], references: [id], onDelete: Cascade)
+  jadwalPraktek    JadwalPraktek @relation(fields: [jadwalPraktekId], references: [id], onDelete: Cascade)
+  rekamMedis       RekamMedis?
+
+  @@map("pendaftaran")
+}
+
+model RekamMedis {
+  id              Int         @id @default(autoincrement())
+  pendaftaranId   Int         @unique
+  diagnosis       String      @db.Text
+  tindakan        String      @db.Text
+  resep           String?     @db.Text
+  catatan         String?     @db.Text
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  pendaftaran     Pendaftaran @relation(fields: [pendaftaranId], references: [id], onDelete: Cascade)
+
+  @@map("rekam_medis")
+}
