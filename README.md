@@ -255,4 +255,14 @@ Halaman Utama (/)
 
 ---
 
+## 🔗 Live Demo
+- Frontend: https://rsud-app-frontend-production.up.railway.app/
+- Backend API: https://rsud-app-production.up.railway.app/
+
+### Akun Demo
+- **Admin**: admin@rsud.id / admin123
+- **Petugas**: (isi sesuai yang kamu buat)
+
+---
+
 > Dibuat sebagai proyek portofolio · 2026 oleh Graciella Zahra Angelia
