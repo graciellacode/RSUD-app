@@ -261,7 +261,7 @@ Halaman Utama (/)
 
 ### Akun Demo
 - **Admin**: admin@rsud.id / admin123
-- **Petugas**: (isi sesuai yang kamu buat)
+- **Petugas**: petugas@rsud.id / petugas123
 
 ---
 
