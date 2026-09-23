@@ -1,5 +1,3 @@
 {
-  "buildCommand": "cd rsud-frontend && npm run build",
-  "outputDirectory": "rsud-frontend/.next",
-  "installCommand": "cd rsud-frontend && npm install"
+  "framework": "nextjs"
 }
