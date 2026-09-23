@@ -3,6 +3,7 @@ import { PasienService } from './pasien.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Public } from '../auth/decorators/public.decorator';
 
+@UseGuards(JwtAuthGuard)
 @Controller('pasien')
 export class PasienController {
   constructor(private readonly pasienService: PasienService) { }

@@ -10,7 +10,5 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [PrismaModule, AuthModule, PasienModule, DokterModule, JadwalModule, PendaftaranModule, RekamMedisModule, DashboardModule],
-  controllers: [], // <--- Kosongkan saja karena AppController sudah dihapus
-  providers: [],   // <--- Kosongkan saja karena AppService sudah dihapus
 })
 export class AppModule { }
